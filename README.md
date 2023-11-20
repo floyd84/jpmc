@@ -132,3 +132,88 @@ resource "aws_instance" "web" {
 }
 
 ```
+
+```
+terraform validate
+   95  ls
+   96  terraform plan
+   97  terraform apply
+   98  vi ec2.tf 
+   99  terraform apply
+  100  cat ec2.tf 
+  101  terraform apply
+  102  vi ec2.tf 
+  103  terraform apply
+  104  clear
+  105  ls
+  106  cat terraform.tfstate
+  107  clear
+  108  ls
+  109  vi ec2.tf 
+  110  cat terraform.tfstate
+  111  clear
+  112  vi ec2.tf 
+  113  terraform validate
+  114  vi ec2.tf 
+  115  terraform validate
+  116  terraform plan
+  117  cat ec2.tf 
+  118  terraform apply
+  119  clear
+  120  cat terraform.tfstate
+  121  clear
+  122  cat ec2.tf 
+  123  clear
+  124  terraform validate
+  125  terraform plan
+  126  cat ec2.tf 
+  127  terraform apply -auto-approve
+  128  terraform apply
+  129  clear
+  130  vi ec2.tf 
+  131  ls
+  132  rm -rf terraform.tfstate terraform.tfstate.backup 
+  133  clear
+  134  terraform plan
+  135  terraform apply
+  136  clear
+  137  ls
+  138  terraform plan
+  139  terraform apply
+  140  clear
+  141  cat ec2.tf 
+  142  vi ec2.tf 
+  143  terraform apply
+  144  terraform state list
+  145  clear
+  146  vi ec2.tf 
+  147  terraform apply -auto-approve
+  148  clear
+  149  terraform destroy
+```
+
+
+```
+root@ip-172-31-10-175:~# cat ec2.tf 
+provider "aws" {
+  region = "ap-south-1"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0a7cf821b91bcccbc"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+resource "aws_instance" "web2" {
+  ami           = "ami-0a7cf821b91bcccbc"
+  availability_zone= "ap-south-1a"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld22"
+  }
+```
