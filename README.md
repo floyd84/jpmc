@@ -67,3 +67,31 @@ https://developer.hashicorp.com/terraform/install?product_intent=terraform
 
 ```
 
+
+```
+https://developer.hashicorp.com/terraform/install?product_intent=terraform
+
+
+
+https://registry.terraform.io/
+
+providers block
+resource blocks
+
+
+-- https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+
+
+--authentication : authenticating our ,main server to our aws account
+aws configure
+
+
+sudo -i
+apt update -y
+apt install -y unzip
+apt install -y wget
+https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#cliv2-linux-install (copy the three commands)
+ln -s  /usr/local/bin/aws  /usr/bin/
+aws --version --To get the version of aws
+
+```
