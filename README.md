@@ -61,3 +61,9 @@ storage : 20 gb
 
 ```
 
+```
+
+https://developer.hashicorp.com/terraform/install?product_intent=terraform
+
+```
+
