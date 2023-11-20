@@ -95,3 +95,20 @@ ln -s  /usr/local/bin/aws  /usr/bin/
 aws --version --To get the version of aws
 
 ```
+
+```
+
+--authentication : authenticating our ,main server to our aws account
+aws configure
+
+root@ip-172-31-10-175:~# aws s3 ls
+
+Unable to locate credentials. You can configure credentials by running "aws configure".
+root@ip-172-31-10-175:~# aws configure
+AWS Access Key ID [None]: AKIAT2EFG
+AWS Secret Access Key [None]: yT3K2CPNm3e9pZJXw
+Default region name [None]: ap-south-1
+Default output format [None]: 
+root@ip-172-31-10-175:~# aws s3 ls
+
+```
