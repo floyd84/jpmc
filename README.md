@@ -47,5 +47,17 @@ Rps@12345
 
 ```
 
+```
 
+--------------
+
+Ubuntu Server 20.04 LTS (HVM), SSD Volume Type
+
+t2.medium
+
+ramanvirg1 (.pem)
+
+storage : 20 gb
+
+```
 
