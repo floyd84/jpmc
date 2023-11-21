@@ -332,11 +332,6 @@ os_disk {
 ```
 
 
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-
-```
-
-
 ```
 
 root@ip-172-31-11-146:~# cat ec2.tf 
