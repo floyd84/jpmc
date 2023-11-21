@@ -352,7 +352,7 @@ resource "aws_instance" "web2" {
   ami           = "ami-0a7cf821b91bcccbc"
   instance_type = var.type
 #  vpc_security_group_ids=  ["sg-091098ee7a282d63f"]
-   vpc_security_group_ids= [vpc_security_group_ids.sg.id]
+   vpc_security_group_ids= [aws_security_group.sg.id]
   tags = {
     Name = var.name
   }
