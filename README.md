@@ -34,7 +34,7 @@ vaibhav : np , p
 
 9
 
-23RIC3469_U09 : govind p , np
+23RIC3469_U09 : govind p , p
 
 10
 
