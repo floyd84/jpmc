@@ -1,44 +1,45 @@
-https://forms.office.com/r/wNEtQYeakB
-
-
 # jpmc
 
 
 ```
-23RIC3469_U01 : shubhu
+23RIC3469_U01 : shubhu : p , p
 
-23RIC3469_U02 : arin
+23RIC3469_U02 : arin , p , p
 
 
-23RIC3469_U03 : ravi
+23RIC3469_U03 : ravi : p , p
 
 4
 
-23RIC3469_U04 : floyd
+23RIC3469_U04 : floyd : p , p
 
 5
 
-23RIC3469_U05 : jojin
+23RIC3469_U05 : jojin : p , p
 
 6
 
-23RIC3469_U06 : karthik
+23RIC3469_U06 : karthik : p , p
 
 7
 
-23RIC3469_U07 : simi
+23RIC3469_U07 : simi : p, p
+
+
+vaibhav : np , p
 
 8
 
-23RIC3469_U08 : nirmal
+23RIC3469_U08 : nirmal : p , p
 
 9
 
-23RIC3469_U09 : govind
+23RIC3469_U09 : govind p , np
 
 10
 
-23RIC3469_U10 : omkar
+23RIC3469_U10 : omkar p, p
+
 
 ```
 
