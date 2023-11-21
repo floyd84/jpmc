@@ -3,70 +3,9 @@ DAY 2:
 https://tcheck.co/2HYzh7
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # jpmc
 
 
-``` bnglore :
-23RIC3469_U01 : shubhu : p , p
-
-23RIC3469_U02 : arin , p , p
-
-
-23RIC3469_U03 : ravi : p , p
-
-4
-
-23RIC3469_U04 : floyd : p , p
-
-5
-
-23RIC3469_U05 : jojin : p , p
-
-6
-
-23RIC3469_U06 : karthik : p , p
-
-7
-
-23RIC3469_U07 : simi : p, p
-
-
-vaibhav : np , p
-
-
-
-hyderbd :
-
-8
-
-23RIC3469_U08 : nirmal : p , p
-
-9
-
-23RIC3469_U09 : govind p , p
-
-10
-
-23RIC3469_U10 : omkar p, p
-
-
-```
 
 ```
 
