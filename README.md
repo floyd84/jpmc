@@ -458,3 +458,131 @@ variable cidr {
 default="0.0.0.0/0"
 }                                                                                                                                                                            
 ```
+
+
+```
+LIST AND MAPS :
+
+
+root@ip-172-31-11-146:~# cat ec2.tf 
+provider "aws" {
+  region = "ap-south-1"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0a7cf821b91bcccbc"
+#  instance_type = var.type[0]
+  instance_type=var.types["dev"]
+  vpc_security_group_ids=  ["sg-091098ee7a282d63f"]
+  tags = {
+    Name = var.name[0]
+  }
+}
+
+resource "aws_instance" "web2" {
+  ami           = "ami-0a7cf821b91bcccbc"
+#  instance_type = var.type[2]
+   instance_type=var.types["prod"]
+#  vpc_security_group_ids=  ["sg-091098ee7a282d63f"]
+   vpc_security_group_ids= [aws_security_group.sg.id]
+  tags = {
+    Name = var.name[1]
+  }
+}
+
+resource "aws_security_group" "sg" {
+  name        = "training-sg"
+  description = "training-sg"
+  vpc_id      = "vpc-027b7a70751225ee4"
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = [var.cidr]
+  }
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = [var.cidr]
+  }
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = [var.cidr]
+  }
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 3389
+    to_port          = 3389
+    protocol         = "tcp"
+    cidr_blocks      = [var.cidr]
+  }
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 636
+    to_port          = 636
+    protocol         = "tcp"
+    cidr_blocks      = [var.cidr]
+  }
+
+
+
+
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = [var.cidr]
+  }
+
+  tags = {
+    Name = "training-sg"
+  }
+}
+
+
+
+
+```
+
+LIST AND MAPS
+
+```
+root@ip-172-31-11-146:~# cat variable.tf 
+/*
+variable type {
+type=list
+default= ["t2.micro","t3.micro","t2.medium"]
+}
+
+*/
+
+variable name {
+type= list
+default=["ramanserver-1","raman-server-2"]
+}
+
+variable cidr {
+default="10.0.0.0/24"
+}
+
+variable types {
+type=map
+default= {
+dev="t2.micro"
+uat="t3.micro"
+prod="t2.medium"
+}
+}
+```
