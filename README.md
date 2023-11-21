@@ -335,3 +335,111 @@ os_disk {
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 ```
+
+
+```
+
+root@ip-172-31-11-146:~# cat ec2.tf 
+provider "aws" {
+  region = "ap-south-1"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0a7cf821b91bcccbc"
+  instance_type = var.type
+  vpc_security_group_ids=  ["sg-091098ee7a282d63f"]
+  tags = {
+    Name = var.name
+  }
+}
+
+resource "aws_instance" "web2" {
+  ami           = "ami-0a7cf821b91bcccbc"
+  instance_type = var.type
+#  vpc_security_group_ids=  ["sg-091098ee7a282d63f"]
+   vpc_security_group_ids= [vpc_security_group_ids.sg.id]
+  tags = {
+    Name = var.name
+  }
+}
+
+resource "aws_security_group" "sg" {
+  name        = "training-sg"
+  description = "training-sg"
+  vpc_id      = "vpc-027b7a70751225ee4"
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = [var.cidr]
+  }
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = [var.cidr]
+  }
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = [var.cidr]
+  }
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 3389
+    to_port          = 3389
+    protocol         = "tcp"
+    cidr_blocks      = [var.cidr]
+  }
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 636
+    to_port          = 636
+    protocol         = "tcp"
+    cidr_blocks      = [var.cidr]
+  }
+
+
+
+
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = [var.cidr]
+  }
+
+  tags = {
+    Name = "training-sg"
+  }
+}
+
+
+
+```
+
+```
+
+variable type {
+default="t3.micro"
+}
+
+variable name {
+default="ramanserver-jpmc"
+}
+
+variable cidr {
+default="0.0.0.0/0"
+}
+~                                                                                                                                                                               
+```
