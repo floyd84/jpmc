@@ -1,3 +1,24 @@
+DAY 2:
+
+https://tcheck.co/2HYzh7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # jpmc
 
 
