@@ -221,3 +221,11 @@ resource "aws_instance" "web2" {
     Name = "HelloWorld22"
   }
 ```
+
+
+
+```
+
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+```
