@@ -226,6 +226,108 @@ resource "aws_instance" "web2" {
 
 ```
 
+provider "github" {
+  token="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"
+}
+
+
+
+resource "github_repository" "example" {
+  name        = "raman-jpmc-test-repo"
+  description = "My awesome codebase"
+
+  visibility = "public"
+
+}
+
+```
+
+```
+root@ip-172-31-11-146:~# cat azure.tf 
+provider "azurerm" {
+features{}
+}
+
+
+
+resource "azurerm_resource_group" "rg" {
+  name     = "raman-tf-resources"
+  location = "Australia East"
+}
+
+resource "azurerm_public_ip" "example" {
+  name                = "acceptanceTestPublicIp1"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  allocation_method   = "Static"
+
+  tags = {
+    environment = "Production"
+  }
+}
+
+
+
+
+resource "azurerm_virtual_network" "network" {
+  name                = "raman-network"
+  address_space       = ["10.0.0.0/16"]
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+}
+
+resource "azurerm_subnet" "subnet" {
+  name                 = "raman-subnet"
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.network.name
+  address_prefixes     = ["10.0.2.0/24"]
+}
+
+resource "azurerm_network_interface" "nic" {
+  name                = "raman-nic"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.subnet.id
+    public_ip_address_id= azurerm_public_ip.example.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
+
+resource "azurerm_linux_virtual_machine" "vm" {
+  name                = "raman-machine"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  size                = "Standard_F2"
+  disable_password_authentication="false"
+  admin_username      = "adminuser"
+  admin_password      = "Rmankhn@2023"
+  network_interface_ids = [
+    azurerm_network_interface.nic.id,
+  ]
+
+os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "16.04-LTS"
+    version   = "latest"
+
+#az vm image list --offer CentOS --all
+  }
+}
+
+
+```
+
+
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 ```
