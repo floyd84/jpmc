@@ -803,3 +803,68 @@ variable "ami" {
 }
 
 ```
+
+```
+
+root@ip-172-31-11-146:~# cat iam.tf 
+provider "aws" {
+region ="us-east-1"
+}
+
+resource "aws_iam_user" "lb" {
+ count=4  
+ name = var.users[count.index]
+
+  tags = {
+    env = "prod"
+  }
+}
+
+
+variable users {
+type=list
+default=["jpmc1","jpmc2","jpmc3","jpmc4"]
+}
+
+```
+
+```
+WORKSPACE :
+
+root@ip-172-31-11-146:~/work# cat work.tf 
+provider "aws" {
+  region     = "ap-south-1"
+
+}
+
+
+resource "aws_instance" "myec2" {
+   ami = "ami-064ff912f78e3e561"
+   instance_type = lookup(var.instance_type,terraform.workspace)
+tags = {
+    Name = lookup(var.name,terraform.workspace)
+  }
+}
+
+
+
+variable "instance_type" {
+  type = map
+
+  default = {
+    default = "t2.nano"
+    dev     = "t2.micro"
+    prod     = "t2.large"
+  }
+}
+
+variable "name"{
+type=map
+default= {
+default="IT server"
+dev="dev-server"
+prod="prod-server"
+}
+}
+
+```
