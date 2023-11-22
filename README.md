@@ -739,3 +739,67 @@ resource "aws_security_group" "allow_ssh" {
 }
 
 ```
+
+
+
+FUNCATIONS :
+
+```
+
+oot@ip-172-31-11-146:~/func# cat func.tf 
+provider "aws" {
+  region     = var.region
+}
+
+locals {
+  time = formatdate("DD MMM YYYY hh:mm ZZZ", timestamp())
+}
+
+
+
+
+resource "aws_instance" "app-dev" {
+   ami = lookup(var.ami,var.region)  #in terraform console: lookup({us-east-1="ami1",us-east-2="ami2",ap-south-1="ami3"},"ap-south-1","NA") #
+   instance_type = "t2.micro"
+   count = 2
+
+   tags = {
+     Name = element(var.tags,count.index)    # element(["firstec2","secondec2"],1) #
+   }
+}
+
+output "timestamp" {
+  value = local.time
+}
+
+/*
+output "prvateip" {
+  value = aws_instance.app-dev[count.index].private_ip
+}
+*/
+
+
+```
+
+```
+
+root@ip-172-31-11-146:~/func# cat variable.tf 
+variable "region" {
+default="ap-south-1"
+}
+
+variable "tags" {
+  type = list
+  default = ["firstec2","secondec2"]
+}
+
+variable "ami" {
+  type = map
+  default = {
+    "us-east-1" = "ami-0323c3dd2da7fb37d"
+    "us-west-2" = "ami-0d6621c01e8c2de2c"
+    "ap-south-1" = "ami-0470e33cd681b2476"
+  }
+}
+
+```
