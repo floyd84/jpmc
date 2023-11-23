@@ -997,5 +997,45 @@ tags = {
 
 ```
 
+```
+TF CLOUD REMOTE OPERATIONS :
+--- terraform login : create an api token and authenticate...
+
+
+
+root@ip-172-31-11-146:~/cloud# cat ec2.tf 
+terraform {
+  cloud {
+    organization = "raman-tf"
+
+    workspaces {
+      name = "cli-workspace"
+    }
+  }
+}
+
+provider "aws" {
+region="ap-south-1"
+}
+
+resource "aws_instance" "ec2" {
+instance_type= "t2.medium"
+ami="ami-0d92749d46e71c34c"
+tags = {
+    Name = "raman-server"
+  }
+}
+
+
+```
+
+terraform init
+plan and apply from local to cloud..
+
+
+```
+VCS ---- TF CLOUD
+
+```
 
 
