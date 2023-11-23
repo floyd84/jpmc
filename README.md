@@ -868,3 +868,98 @@ prod="prod-server"
 }
 
 ```
+
+
+```
+
+LOCAL MODULES :
+
+root@ip-172-31-11-146:~/app# tree
+.
+├── modules
+│   ├── ec2
+│   │   ├── ec2.tf
+│   │   └── variable.tf
+│   └── s3
+│       └── s3.tf
+└── projects
+    ├── projectA
+    │   ├── dev
+    │   │   ├── main.tf
+    │   │   ├── terraform.tfstate
+    │   │   └── terraform.tfstate.backup
+    │   └── prod
+    │       ├── main.tf
+    │       ├── terraform.tfstate
+    │       └── terraform.tfstate.backup
+    └── projectB
+
+
+```
+root@ip-172-31-11-146:~/app# ls
+modules  projects
+root@ip-172-31-11-146:~/app# cd modules/
+root@ip-172-31-11-146:~/app/modules# ls
+ec2  s3
+root@ip-172-31-11-146:~/app/modules# cd ec2/
+root@ip-172-31-11-146:~/app/modules/ec2# ls
+ec2.tf  variable.tf
+root@ip-172-31-11-146:~/app/modules/ec2# cat ec2.tf 
+resource "aws_instance" "ec2" {
+instance_type= var.type
+ami="ami-0d92749d46e71c34c"
+tags = {
+    Name = var.name
+  }
+}
+root@ip-172-31-11-146:~/app/modules/ec2# cat variable.tf 
+variable "type" {
+default="t2.micro"
+}
+
+variable "name" {
+default="dev-server"
+}
+```
+
+```
+root@ip-172-31-11-146:~/app/modules/s3# cat s3.tf 
+resource "aws_s3_bucket" "example" {
+  bucket = "my-tf-test-bucketttttttttttttttttttttttttttttttt"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+```
+
+
+```
+
+root@ip-172-31-11-146:~/app/projects/projectA/dev# cat main.tf 
+provider "aws" {
+region="ap-south-1"
+}
+
+module "ec2module" {
+#source="../../modules/ec2"
+source="/root/app/modules/ec2"
+}
+
+```
+
+
+```
+ root@ip-172-31-11-146:~/app/projects/projectA/prod# cat main.tf 
+module "ec2module" {
+#source="../../modules/ec2"
+source="/root/app/modules/ec2"
+type="t2.medium"
+name="prod-server"
+}
+module "s3module" {
+source="/root/app/modules/s3"
+}
+
+```
