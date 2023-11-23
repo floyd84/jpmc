@@ -965,6 +965,37 @@ source="/root/app/modules/s3"
 ```
 
 
+```
+BACKEND AND STATE LOCKING :
+
+root@ip-172-31-11-146:~/remote# cat backend.tf 
+terraform {
+  backend "s3" {
+    bucket = "jpmc-statefille"
+    key    = "terraform/state"
+    region = "us-east-1"
+    dynamodb_table = "tflock"
+  }
+}
+
+root@ip-172-31-11-146:~/remote# cat ec2.tf 
+provider "aws" {
+region="us-east-1"
+}
+
+resource "aws_instance" "ec2" {
+instance_type= "t2.medium"
+ami="ami-0fa1ca9559f1892ec"
+tags = {
+    Name = "raman-server"
+  }
+}
+
+
+** dynamodb_table = "tflock” 			//create a dynamodb table with LockID column –type String for State Locking
+
+
+```
 
 
 
