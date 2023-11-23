@@ -1,7 +1,4 @@
-DAY 2:
-
-https://tcheck.co/2HYzh7
-
+https://github.com/ramannkhanna2/tteraform-aws-moduless.git
 
 # jpmc
 
@@ -966,3 +963,8 @@ source="/root/app/modules/s3"
 }
 
 ```
+
+
+
+
+
