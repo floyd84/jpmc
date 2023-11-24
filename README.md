@@ -1,4 +1,7 @@
 
+
+
+
 FINAL FEEDBACK :
 
 https://forms.office.com/r/1Jn0UThNbT 
@@ -1083,7 +1086,78 @@ https://pkg.jenkins.io/debian-stable/
 
 ```
 ```
-VCS ---- TF CLOUD
+
+df -h
+ 1254  clear
+ 1255  sudo wget -O /usr/share/keyrings/jenkins-keyring.asc     https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+ 1256  sudo apt-get update
+ 1257  sudo apt-get install fontconfig openjdk-17-jre
+ 1258  sudo apt-get install jenkins
+ 1259  systemctl status jenkins
+ 1260  cat /var/lib/jenkins/secrets/initialAdminPassword
+ 1261  clear
+ 1262  cd /var/lib/jenkins/
+ 1263  ls
+ 1264  cat /etc/passwd
+ 1265  clear
+ 1266  ls
+ 1267  cd workspace/
+ 1268  s
+ 1269  ls
+ 1270  cd test
+ 1271  ls
+ 1272  clear
+ 1273  systemctl status jenkins
+ 1274  vi /lib/systemd/system/jenkins.service
+ 1275  systemctl daemon-reload
+ 1276  systemctl restart jenkins
+ 1277  sudo yum install epel-release
+ 1278  sudo apt install epel-release
+ 1279  apt install ansible
+ 1280  ansible -v
+ 1281  cear
+ 1282  clear
+ 1283  ansible --version
+ 1284  terraform -v
+ 1285  vi /etc/ansible/ansible.cfg
+ 1286  clear
+ 1287  ssh-keygen -t rsa
+ 1288  ls -a
+ 1289  cd .ssh
+ 1290  ls
+ 1291  cat id_rsa
+ 1292  cat id_rsa.pub
+ 1293  cd ..
+ 1294  ls
+ 1295  ls -a
+ 1296  cd .ssh/
+ 1297  ls
+ 1298  pwd
+ 1299  clear
+ 1300  cd ..
+ 1301  ;s
+ 1302  ls
+ 1303  cd /tmp/
+ 1304  ls
+ 1305  cat inv 
+ 1306  hisory
+ 1307  history
+ ```
+
+```
+clear
+  515  git clone https://github.com/ramannkhanna2/Ddevops-terraform-ansiblee.git
+  516  clear
+  517  ls
+  518  cd Ddevops-terraform-ansiblee/
+  519  clear
+  520  ls
+  521  ls
+  522  vi web.yaml
+  523  git add .
+  524  git status
+  525  git commit -m " boss theres a change"
+  526  git push origin main
 
 ```
 
