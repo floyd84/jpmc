@@ -1,7 +1,3 @@
-
-
-
-
 FINAL FEEDBACK :
 
 https://forms.office.com/r/1Jn0UThNbT 
@@ -23,7 +19,7 @@ https://developer.hashicorp.com/terraform/language/providers
 
 
 ```
-
+```
 cicd pipeline :
 
 
@@ -33,7 +29,7 @@ https://github.com/ramannkhanna2/Ddevops-terraform-ansiblee.git
 ```
 
 
-
+```
 https://github.com/ramannkhanna2/tteraform-aws-moduless.git
 
 # jpmc
@@ -41,7 +37,7 @@ https://github.com/ramannkhanna2/tteraform-aws-moduless.git
 https://github.com/ramannkhanna2/TF-advanced.git
 
 ```
-
+```
 https://cloud2.rpsconsulting.in/console/#/
 
 Rps@12345
