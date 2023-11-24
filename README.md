@@ -11,6 +11,10 @@ https://developer.hashicorp.com/terraform/language/providers
 
 cicd pipeline :
 
+
+https://github.com/ramannkhanna2/Ddevops-terraform-ansiblee.git
+
+
 ```
 
 
