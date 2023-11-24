@@ -1,3 +1,20 @@
+```
+
+terraorm exam reference links :
+
+https://www.examtopics.com/exams/hashicorp/terraform-associate/view/
+
+https://developer.hashicorp.com/terraform/language/providers
+
+
+```
+
+cicd pipeline :
+
+```
+
+
+
 https://github.com/ramannkhanna2/tteraform-aws-moduless.git
 
 # jpmc
