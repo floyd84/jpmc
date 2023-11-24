@@ -1054,6 +1054,22 @@ terraform init
 plan and apply from local to cloud..
 
 
+
+
+```
+jenkins :
+
+sdlc :
+
+jenkins workflow :
+vcs(github) >>> build (maven) >> .jar >>> server(terraform) >> ansible (httpd) 
+
+
+-- installation of jenkins..
+
+https://pkg.jenkins.io/debian-stable/
+
+```
 ```
 VCS ---- TF CLOUD
 
